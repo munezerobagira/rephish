@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function campaigns(){
+        return $this->hasMany(Campaign::class);
+    }
+    public function audiences(){
+        return $this->hasManyThrough(Audience::class,Campaign::class);
+    }
+    public function events(){
+        return $this->hasManyThrough(Event::class,Campaign::class);
+    }
+    public function activities(){
+        return $this->hasManyThrough(Activity::class,Event::class);
+    }
 }

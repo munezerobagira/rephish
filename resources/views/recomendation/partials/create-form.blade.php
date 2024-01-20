@@ -1,21 +1,33 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Create a  compaign') }}
+            {{ __('Add events to campaign') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Create a campaign to group the events and manage audience very easier') }}
+           Create recomendation for your audience
         </p>
     </header>
 
-    <form method="post" action="{{ route('campaign.store') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('recomendation.store') }}" class="mt-6 space-y-6">
         @csrf
         @method('post')
-        <x-simple-input label="Name" name="name"/>
-        <x-simple-input label="Description" name="description" type="textarea"/>
-        <x-simple-input label="Starting time" name="start_date" type="datetime-local"/>
-        <x-simple-input label="Ending time" name="end_date" type="datetime-local"/>
+        <x-simple-input label="Category" name="category" type="select">
+            <option value="email_phishing">Email phishing</option>
+            <option value="sms_phishing">SMS phishing</option>
+            <option value="twitter_phishing">Twitter phishing</option>
+            <option value="facebook_phishing">Facebook phishing</option>
+        </x-simple-input>
+        <x-simple-input label="Activity" name="activity" type="select">
+            <option value="email_phishing">View</option>
+            <option value="sms_phishing">Click</option>
+            <option value="twitter_phishing">Download</option>
+            <option value="facebook_phishing">Facebook phishing</option>
+        </x-simple-input>
+        <x-simple-input label="Content" name="content" type="textarea"/>
+        <x-simple-input label="Recomendation" name="content" type="textarea"/>
+
+
 
         <!--- map through all error -->
         @if ($errors->any())

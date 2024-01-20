@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -18,9 +19,21 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::resource('/a', ActivityController::class);
 Route::get('/dashboard', function (Request $request) {
-    return view('dashboard', ['user' => $request->user()]);
+
+    $campaign_count=$request->user()->campaigns()->count();
+    $audience_count=$request->user()->audiences()->count();
+    $event_count=$request->user()->events()->count();
+    $activity_count=$request->user()->activities()->count();
+
+    return view('dashboard',
+    ['user' => $request->user(),
+     'campaigns_count'=>$campaign_count,
+     'audiences_count'=>$audience_count,
+     'events_count'=>$event_count,
+     'activities_count'=>$activity_count
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -32,3 +45,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 require __DIR__.'/campaign.php';
 require __DIR__.'/audience.php';
+require __DIR__.'/event.php';
+require __DIR__.'/recomendation.php';

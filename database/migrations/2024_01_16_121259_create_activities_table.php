@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('audiences', function (Blueprint $table) {
+        Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("first_name");
-            $table->string("last_name");
-            $table->foreignId("campaign_id")->constrained()->onDelete("cascade");
-            $table->string("email")->nullable();
+            $table->string("audience_id");
             $table->string("phone_number")->nullable();
             $table->string("whatsapp_number")->nullable();
             $table->string("facebook_handler")->nullable();
             $table->string("twitter_handler")->nullable();
+            $table->string("activity");
+            $table->json("data");
+            $table->foreignId("event_id")->constrained()->onDelete("cascade");
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('audiences');
+        Schema::dropIfExists('activities');
     }
 };

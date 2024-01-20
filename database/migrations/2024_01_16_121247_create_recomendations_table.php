@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('campaigns', function (Blueprint $table) {
+        Schema::create('recomendations', function (Blueprint $table) {
             $table->id();
-            $table->string('start_date');
-            $table->string('end_date');
-            $table->string("name");
-            $table->string("description");
-            $table->foreignId("user_id");
             $table->timestamps();
+            $table->text("content");
+            $table->text("category");
+            $table->string("activity");
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('campaigns');
+        Schema::dropIfExists('recomendations');
     }
 };

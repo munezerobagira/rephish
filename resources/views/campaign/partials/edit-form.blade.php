@@ -9,13 +9,13 @@
         </p>
     </header>
 
-    <form method="post" action="{{ route('campaign.store') }}" class="mt-6 space-y-6">
+    <form method="post" action="/campaign/{{$campaign->id}}" class="mt-6 space-y-6">
         @csrf
-        @method('post')
-        <x-simple-input label="Name" name="name"/>
-        <x-simple-input label="Description" name="description" type="textarea"/>
-        <x-simple-input label="Starting time" name="start_date" type="datetime-local"/>
-        <x-simple-input label="Ending time" name="end_date" type="datetime-local"/>
+        @method('put')
+        <x-simple-input label="Name" name="name" :value="$campaign['name']"/>
+        <x-simple-input label="Description" name="description" type="textarea" :value="$campaign['description']"/>
+        <x-simple-input label="Starting time" name="start_date" type="datetime-local" :value="$campaign['start_date']"/>
+        <x-simple-input label="Ending time" name="end_date" type="datetime-local"  :value="$campaign['end_date']"/>
 
         <!--- map through all error -->
         @if ($errors->any())
@@ -28,7 +28,7 @@
             </div>
         @endif
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Edit') }}</x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p

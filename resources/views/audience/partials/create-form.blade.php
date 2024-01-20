@@ -1,34 +1,35 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Add an compaign audience ') }}
+            {{ __('Add audience to a  compaign') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Create a campaign to group the events') }}
+            {{ __('Adding the audience to campaign make it very easier to create campaign events') }}
         </p>
     </header>
 
-    <form method="post" action="{{ route('campaign.store') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('audience.store', ['campaign'=> $campaign->id]) }}" class="mt-6 space-y-6">
         @csrf
         @method('post')
-        <div>
-            <x-input-label for="store_campaign_name" :value="__('Name')" />
-            <x-text-input id="store_campaign_name" name="title" type="text" class="mt-1 block w-full" />
-            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
-        </div> 
-     
-       
-        <div>
-            <x-input-label for="store_campaign_name" :value="__('Email')" />
-            <x-text-input id="store_campaign_name" name="email" type="text" class="mt-1 block w-full"  />
-            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
-        </div> 
-        <div>
-            <x-input-label for="store_campaign_name" :value="__('Phone number')" />
-            <x-text-input id="store_campaign_name" name="title" type="tel" class="mt-1 block w-full"  />
-            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
-        </div>
+        <x-simple-input label="First name" name="first_name"/>
+        <x-simple-input label="Last name" name="last_name" type="text"/>
+        <x-simple-input label="email" name="email" type="email"/>
+        <x-simple-input label="Phone nubmer" name="phone_number" type="tel"/>
+        <x-simple-input label="Whatsapp nubmer" name="whatsapp_number" type="tel"/>
+        <x-simple-input label="Facebook username" name="facebook_handler" type="tel"/>
+        <x-simple-input label="Twitter username" name="twitter_handler" type="text"/>
+
+        <!--- map through all error -->
+        @if ($errors->any())
+            <div class="text-sm text-red-400">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

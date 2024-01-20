@@ -13,8 +13,6 @@
                     @include('campaign.partials.create-form')
                 </div>
             </div>
-
-          
         </div>
     </div>
 </x-app-layout>

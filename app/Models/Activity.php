@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Audience extends Model
+class Activity extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded = [];
+    public function audience(){
+        return $this->belongsTo(Audience::class);
+    }
     public function campaign(){
         return $this->belongsTo(Campaign::class);
-    }
-    public function activities(){
-        return $this->hasMany(Activity::class);
     }
 
 }
