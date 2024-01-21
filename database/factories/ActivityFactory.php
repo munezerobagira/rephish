@@ -17,7 +17,13 @@ class ActivityFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            // $table->timestamps();
+            'audience_id' => $this->faker->numberBetween(1, 10),
+            'phone_number' => $this->faker->phoneNumber(),
+            'whatsapp_number' => $this->faker->phoneNumber(),
+            'facebook_handler' => $this->faker->userName(),
+            'twitter_handler' => $this->faker->userName(),
+            'activity' => $this->faker->randomElement(['viewed', 'clicked', 'downloaded']),
         ];
     }
 }

@@ -17,7 +17,12 @@ class CampaignFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
+            'name' => $this->faker->name(),
+            'description' => $this->faker->text(),
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'is_active' => $this->faker->boolean(),
         ];
     }
 }

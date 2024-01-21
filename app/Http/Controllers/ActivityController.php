@@ -11,7 +11,7 @@ use Illuminate\Validation\Rule;
 class ActivityController extends Controller
 {
 
-    public function index(){
+    public function record(){
         // au=audience_id, a=activity, c=campaign_id, e=event_id
 
         $activities_array=["v"=>"viewed", "c"=>"clicked", "d"=>"downloaded",];
@@ -67,5 +67,8 @@ class ActivityController extends Controller
         return response('',200)->setContent(base64_decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/D/PwAHAwL/qGeMxAAAAABJRU5ErkJggg=="))->header('Content-Type', 'image/png');
 
     }
-
+    public function index(){
+        $activities=request()->user()->activities()->with(['event','audience','campaign'])->latest()->paginate(10);
+        return view("activity.index", ["activities"=>$activities]);
+    }
 }

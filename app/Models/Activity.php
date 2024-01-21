@@ -15,5 +15,7 @@ class Activity extends Model
     public function campaign(){
         return $this->belongsTo(Campaign::class);
     }
+    public function event(){
+        return $this->belongsTo(Event::class);}
 
 }

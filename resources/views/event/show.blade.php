@@ -22,16 +22,17 @@
                         <p ><span class="font-bold text-lg my-2">{{$audience->first_name}} {{$audience->last_name}}</span> Activity links</p>
                         <p>
                             <span class="font-bold">View:</span>
-                            <a href="{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=v">View</a>
+                            <a href="{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=v">{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=v</a>
                             <br/>
                             <span class="font-bold">Click:</span>
-                            <a href="{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=c">Click</a>
+                            <a href="{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=c">{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=c</a>
                             <br/>
                             <span class="font-bold">Download:</span>
-                            <a href="{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=d">Download</a>
+                            <a href="{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=d">{{Config::get('app.url')}}/a?au={{$audience->id}}&amp;e={{$event->id}}&amp;c={{$campaign->id}}&amp;a=d</a>
                         </p>
                     </x-panel>
                 @endforeach
+                {{$audiences->links()}}
             @endif
 
 

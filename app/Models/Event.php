@@ -16,4 +16,7 @@ class Event extends Model
     public function audiences(){
         return $this->hasManyThrough(Audience::class, Campaign::class);
     }
+     public function activities(){
+        return $this->hasMany(Activity::class);
+     }
 }

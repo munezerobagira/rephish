@@ -17,7 +17,18 @@ class AudienceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+
+
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'campaign_id' => $this->faker->numberBetween(1, 10),
+            'email' => $this->faker->email(),
+            'phone_number' => $this->faker->phoneNumber(),
+            'whatsapp_number' => $this->faker->phoneNumber(),
+            'facebook_handler' => $this->faker->userName(),
+            'twitter_handler' => $this->faker->userName(),
+
+
         ];
     }
 }

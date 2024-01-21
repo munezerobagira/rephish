@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/a', ActivityController::class);
+Route::get('/a', [ActivityController::class, 'record']);
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -33,3 +33,4 @@ require __DIR__.'/campaign.php';
 require __DIR__.'/audience.php';
 require __DIR__.'/event.php';
 require __DIR__.'/recomendation.php';
+require __DIR__.'/activity.php';

@@ -17,7 +17,11 @@ class RecomendationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+
+            'content' => $this->faker->text(),
+            'category' => $this->faker->text(),
+            'activity' => $this->faker->word(),
+
         ];
     }
 }

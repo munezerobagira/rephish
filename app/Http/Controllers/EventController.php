@@ -47,7 +47,7 @@ class EventController extends Controller
      */
     public function show( Campaign $campaign,Event $event,)
     {
-        $auidences=$campaign->audiences()->paginate(10);
+        $auidences=$campaign->audiences()->paginate(3);
         return view("event.show",["campaign"=>$campaign, "event"=>$event, "audiences"=>$auidences]);
     }
 

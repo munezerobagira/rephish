@@ -38,18 +38,19 @@ class DashboardController extends Controller
         }
 
         return view('dashboard',
-        [
-            'user' => $request->user(),
-            'campaigns_count'=>$campaign_count,
-            'audiences_count'=>$audience_count,
-            'events_count'=>$event_count,
-            'activities_count'=>$activity_count,
-            'total_recomendations'=>$total_recomendations,
-            'total_users'=>$total_users,
+        ['user' => $request->user(),
+         'campaigns_count'=>$campaign_count,
+         'audiences_count'=>$audience_count,
+         'events_count'=>$event_count,
+         'activities_count'=>$activity_count,
+         'total_recomendations'=>$total_recomendations,
+         'total_users'=>$total_users,
             'total_activities'=>$total_activities,
             'total_events'=>$total_events,
             'total_audiences'=>$total_audiences,
             'total_campaigns'=>$total_campaigns,
+
+
         ]);
     }
 }
