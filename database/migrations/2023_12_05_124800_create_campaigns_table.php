@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("description");
             $table->foreignId("user_id");
             $table->timestamps();
+            $table->boolean("is_active")->default(true);
         });
     }
 

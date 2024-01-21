@@ -13,7 +13,7 @@ class RecomendationController extends Controller
      */
     public function index()
     {
-        $recomendations=Recomendation::all()->paginate(10);
+        $recomendations=Recomendation::paginate(10);
         return view('recomendation.index',["recomendations"=>$recomendations]);
     }
 
@@ -35,7 +35,8 @@ class RecomendationController extends Controller
         //
         $attributes=request()->validate([
             'content'=> 'required',
-            'activity'=> 'required'
+            'activity'=> 'required',
+            'category'=> 'required'
         ]);
        $recomendation=Recomendation::create($attributes);
         return view('recomendation.show',["recomendation"=>$recomendation]);
@@ -78,6 +79,6 @@ class RecomendationController extends Controller
     public function destroy(Recomendation $recomendation)
     {
         $recomendation->delete();
-        return view('recomendation.index');
+        return redirect()->route('recomendation.index');
     }
 }

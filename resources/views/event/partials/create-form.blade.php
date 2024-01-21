@@ -19,8 +19,8 @@
                 <option value="twitter_phishing">Twitter phishing</option>
                 <option value="facebook_phishing">Facebook phishing</option>
         </x-simple-input>
+        <x-simple-input label="Redirect Url" name="redirect_url" type="text"/>
         <x-simple-input label="Event time" name="time" type="time"/>
-
         <x-simple-input label="Frequency" name="frequency" type="select">
             <option value="no_repeat">Doesn't repeat</option>
             <option value="daily">Daily</option>

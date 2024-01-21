@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string("activity");
             $table->json("data");
             $table->foreignId("event_id")->constrained()->onDelete("cascade");
+            $table->foreignId("campaign_id")->constrained()->onDelete("cascade");
         });
     }
 

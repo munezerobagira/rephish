@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("content");
             $table->string("time");
             $table->string("code")->unique();
+            $table->string("redirect_url");
             $table->foreignId("campaign_id")->constrained()->onDelete("cascade");
         });
     }

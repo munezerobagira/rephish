@@ -52,6 +52,6 @@ class User extends Authenticatable
         return $this->hasManyThrough(Event::class,Campaign::class);
     }
     public function activities(){
-        return $this->hasManyThrough(Activity::class,Event::class);
+        return $this->hasManyThrough(Activity::class,Campaign::class);
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,21 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/a', ActivityController::class);
-Route::get('/dashboard', function (Request $request) {
-
-    $campaign_count=$request->user()->campaigns()->count();
-    $audience_count=$request->user()->audiences()->count();
-    $event_count=$request->user()->events()->count();
-    $activity_count=$request->user()->activities()->count();
-
-    return view('dashboard',
-    ['user' => $request->user(),
-     'campaigns_count'=>$campaign_count,
-     'audiences_count'=>$audience_count,
-     'events_count'=>$event_count,
-     'activities_count'=>$activity_count
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

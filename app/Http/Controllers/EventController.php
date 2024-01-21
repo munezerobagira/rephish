@@ -32,6 +32,7 @@ class EventController extends Controller
             'category'=>'string|required',
             'frequency'=>'string|required',
             'content'=>'string|nullable',
+            'redirect_url'=>'string|nullable',
             'time'=>'required',
         ]);
         $attributes['campaign_id']=$campaign->id;
@@ -46,7 +47,8 @@ class EventController extends Controller
      */
     public function show( Campaign $campaign,Event $event,)
     {
-        return view("event.show",["campaign"=>$campaign, "event"=>$event]);
+        $auidences=$campaign->audiences()->paginate(10);
+        return view("event.show",["campaign"=>$campaign, "event"=>$event, "audiences"=>$auidences]);
     }
 
     /**
@@ -69,6 +71,7 @@ class EventController extends Controller
             'category'=>'string|required',
             'frequency'=>'string',
             'content'=>'string|nullable',
+            'redirect_url'=>'string|nullable',
             'time'=>'required',
         ]);
         $event->update($attributes);

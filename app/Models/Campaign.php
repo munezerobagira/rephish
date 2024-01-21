@@ -19,6 +19,6 @@ class Campaign extends Model
         return $this->hasMany(Event::class);
     }
     public function activities(){
-        return $this->hasManyThrough(Activity::class, Audience::class);
+        return $this->hasMany(Activity::class, Audience::class);
     }
 }

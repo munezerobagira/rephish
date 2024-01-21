@@ -7,19 +7,20 @@
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
            Update event targeted to the audience
         </p>
-        <a href="/a?u={{}}&a=v">Activity link:</a>
     </header>
 
     <form method="post" action="{{ route('event.update', ['campaign'=> $campaign->id, 'event'=>$event->id]) }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
         <x-simple-input label="Name" name="name" :value="$event->name"/>
+
         <x-simple-input label="Category" name="category" type="select" :value="$event->category">
                 <option value="email_phishing">Email phishing</option>
                 <option value="sms_phishing">SMS phishing</option>
                 <option value="twitter_phishing">Twitter phishing</option>
                 <option value="facebook_phishing">Facebook phishing</option>
         </x-simple-input>
+        <x-simple-input label="Redirect Url" name="redirect_url" type="text" :value="$event->redirect_url"/>
         <x-simple-input label="Category" name="time" type="time"  :value="$event->time"/>
 
         <x-simple-input label="Frequency" name="frequency" type="select" :value="$event->frequency">

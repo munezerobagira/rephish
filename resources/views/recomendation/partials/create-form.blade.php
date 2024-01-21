@@ -24,7 +24,6 @@
             <option value="twitter_phishing">Download</option>
             <option value="facebook_phishing">Facebook phishing</option>
         </x-simple-input>
-        <x-simple-input label="Content" name="content" type="textarea"/>
         <x-simple-input label="Recomendation" name="content" type="textarea"/>
 
 

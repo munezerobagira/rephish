@@ -3,7 +3,9 @@
         <div  class="flex">
         <h2 class="font-semibold text-xl flex-1 text-gray-800 dark:text-gray-200 leading-tight ">
             Recomendation  </h2>
-        <a href="{{route('recomendation.create', ["campaign"=>$campaign->id])}}" class="text-sm   bg-green-200 text-black rounded-sm p-2 "> Add event</a>
+            @can("admin")
+                <a href="{{route('recomendation.create')}}" class="text-sm   bg-green-200 text-black rounded-sm p-2 "> Add recomendation</a
+            @endcan
         </div>
 
     </x-slot>
